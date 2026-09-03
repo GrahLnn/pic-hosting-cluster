@@ -1,0 +1,13 @@
+name: S3 to GitHub + GitLab pool
+description: Drain R2/B2 staging storage into independent GitHub and GitLab repository shards.
+
+runs:
+  using: composite
+  steps:
+    - name: Install Python dependencies
+      shell: bash
+      run: python -m pip install --disable-pip-version-check --quiet boto3 requests
+
+    - name: Sync staging files to repository pool
+      shell: bash
+      run: python "${{ github.action_path }}/sync_to_pool.py"
