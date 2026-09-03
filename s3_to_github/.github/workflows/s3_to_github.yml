@@ -1,4 +1,4 @@
-name: S3 --> GitHub
+name: S3 --> GitHub + GitLab Pool
 
 on:
   schedule:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:  # 允许手动触发
 
 jobs:
-  S3_To_GitHub:
+  S3_To_Repository_Pool:
     runs-on: ubuntu-latest
 
     env:
@@ -18,5 +18,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4.2.2
 
-      - name: Sync files to GitHub
-        uses: fscarmen2/r2_to_github@v1.0.2
+      - name: Sync files to GitHub + GitLab pool
+        uses: ./s3_to_github
